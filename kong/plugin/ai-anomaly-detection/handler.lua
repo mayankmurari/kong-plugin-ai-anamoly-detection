@@ -1,16 +1,16 @@
-local tokens = require "kong.plugins.ai-anamoly-detection.tokens"
+local tokens = require "kong.plugins.ai-anomaly-detection.tokens"
 -- local socket = require "socket"
 local cjson_safe = require "cjson.safe"
 -- local kong = kong
 local kong_meta = require "kong.meta"
 -- local timer_at = ngx.timer.at
 
-local AIAnamolyDetection = {
+local AIAnomalyDetection = {
     VERSION = kong_meta.version,
-    PRIORITY = 811
+    PRIORITY = 900
 }
 
-function AIAnamolyDetection:access(conf)
+function AIAnomalyDetection:access(conf)
 
     local request_data = {
         path = kong.request.get_path(),
@@ -33,4 +33,4 @@ function AIAnamolyDetection:access(conf)
     end
 end
 
-return AIAnamolyDetection
+return AIAnomalyDetection

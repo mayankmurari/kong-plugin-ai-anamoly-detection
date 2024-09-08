@@ -1,7 +1,7 @@
 local typedefs = require "kong.db.schema.typedefs"
 
 return {
-  name = "ai-anamoly-detection",
+  name = "ai-anomaly-detection",
   fields = {
     {protocols = typedefs.protocols},
     {
@@ -39,6 +39,12 @@ return {
             default = "allow",
             one_of = { "allow", "deny" },
             required = false
+            }
+          },
+          { severity_threshold = {
+            type = "number",
+            required = false,
+            default = 10
             }
           },
           {
