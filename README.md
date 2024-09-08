@@ -1,18 +1,18 @@
-# AI Anamoly Detection - Kong Plugin
+# AI Anomaly Detection - Kong Plugin
 
 # Getting Started
 
 This plugin integrates OpenAI’s GPT models to detect anomalies in API requests managed by Kong. It analyzes incoming requests for suspicious patterns, such as SQL injections or abnormal headers, and blocks any request that is deemed malicious.
 
 * Analyzes request metadata (headers, body, IP, etc.) for anomalies.
-* Uses via the OpenAI API to flag potentially malicious requestst
+* Uses via the OpenAI API to flag potentially malicious requests.
 * Blocks requests if anomalies are detected.
-* Sets Severity Score and sets threshold for throtteling request. 
+* Sets Severity Score and sets threshold for throttling request. 
 
 
 | Parameter      | Type |Required|Description |
 | ----------- | ----------- |----------- |----------------------- |
-| openai_url      | String       |True | Set open ai token endpoint, provide the complete end point Ex : "[https://api.twitter.com/oauth/authorize](https://api.openai.com/v1/chat/completion)"
+| openai_url      | String       |True | Set open ai token endpoint, provide the complete end point Ex : "https://api.openai.com/v1/chat/completion"
 | openai_model   | String        |True | Set the openai model
 | openai_key   | String        | True | Set the openai key
 | max_tokens   | Number        |False | Set Max tokens
