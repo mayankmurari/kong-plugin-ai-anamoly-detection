@@ -17,7 +17,8 @@ This plugin integrates OpenAI’s GPT models to detect anomalies in API requests
 | openai_key   | String        | True | Set the openai key
 | max_tokens   | Number        |False | Set Max tokens
 | anomaly_detection_action   | String        |False | Defines the action on anamoly detection. Either to allow request or deny it.
-| severity_threshold   | String        |False | Threshold for classifying requests as anomalies.. Either to allow request or deny it.
+| included_parameters   | Array      |False | Defines the request parametrs to be configured for  anomaly detection. Allowed values -path,headers,body, method,ip
+| severity_threshold   | String      |False | Threshold for classifying requests as anomalies. Either to allow request or deny it.
 | connect_timeout   | number        |False | Connect timeout for Open AI Host
 | send_timeout   | number        |False | Send timeout for Open AI Host
 | read_timeout   | number        |False | Read timeout for Open AI Host
@@ -52,10 +53,11 @@ curl -i -X POST \
 --data "name=ai-anamoly-detection" \
 --data "config.openai_url={{openai_url}}" \
 --data "config.anomaly_detection_action=allow " \
+--data "config.included_parameters[]=body" \
 --data "config.openai_key={{openai_key}}"  
 ```
 
-In this case plugin will analyse the request for any anamolies using using open API. Any anamolies detected will be logged.
+In this case plugin will analyse the request body for any anamolies using using open API. Any anamolies detected will be logged.
 
 Test API
 
@@ -80,10 +82,11 @@ curl -v -H "Host: example.com" 'http://localhost:8000/anything' \
 --data "name=ai-anamoly-detection" \
 --data "config.openai_url={{openai_url}}" \
 --data "config.anomaly_detection_action=deny " \
+--data "config.included_parameters[]=body" \
 --data "config.openai_key={{openai_key}}"  
 ```
 
-In this case plugin will analyse the request for any anamolies using using open API.If any anamolies are detected will be traffic will be throtelled based on sevirity threshold.
+In this case plugin will analyse the request body for any anamolies using using open API.If any anamolies are detected will be traffic will be throtelled based on sevirity threshold.
 
 Test API
 
