@@ -47,6 +47,15 @@ return {
             default = 10
             }
           },
+          { included_parameters = { 
+            type = "array", 
+              elements = { 
+                type = "string", 
+                  one_of = { "path", "headers", "body", "method", "ip" } 
+                }, 
+              required = true
+            } 
+          },
           {
             connect_timeout = {
               type = "number",
